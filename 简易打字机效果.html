@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简易打字机效果</title>
+	</head>
+	<body>
+		
+		<style>
+			#write{
+				
+			}
+			#w_font{
+				
+			}
+			#line{
+				border: 1px solid green;
+			}
+		</style>
+		
+		<h1 id="write">
+			<span id="w_font">
+				
+			</span>
+			<span id="line">
+				
+			</span>
+		</h1>
+		
+		<script>
+			
+			/*可以优化的地方:
+			 1.每个词组中间停顿
+			 2.打字速度时快时慢
+			 3.光标不打字的时候闪烁*/
+			
+			var write=document.getElementById("write");
+			var font=document.getElementById("w_font");
+			var arr=["免费","开源","易用的","操作简单"];
+			
+			var bigArr=concatArr(arr);
+			var all=bigArr.length;
+			
+			var num=0;
+			
+			setInterval(function(){
+				font.textContent=bigArr[num];
+				num++;
+				if(num==all){
+					num=0;
+				}
+			},250);
+			
+			
+			function concatArr(arr){
+				var bigArr=[];
+				for(var i=0;i<arr.length;i++){
+					bigArr=bigArr.concat(spanFont(arr[i]));
+				}
+				return bigArr;
+			}
+			
+			
+			//将每个字符串转化为一个 12321的数组形式
+			function spanFont(s){
+				var arr=[];
+				for(var j=0;j<s.length;j++){
+					//let n=j;
+					//console.log(s.slice(0,j));
+					arr.push(s.slice(0,j));
+				}
+				for(;j>=0;j--){
+					//let n=j;
+					//console.log(s.slice(0,j));
+					arr.push(s.slice(0,j));
+				}
+				return arr;
+			}
+			
+			
+		</script>
+		
+				
+	</body>
+</html>
+
+	
+	
+	

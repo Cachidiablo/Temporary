@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			/*对比任意两个软件的版本号*/
+			
+			var v1="Version 2.8.9.7";
+			var v2="v2.0.3";
+			var v3="2.1";
+			var v4="2.9.2098版本";
+			var v5="2.9.2098.1";
+			
+			function versionCompare(v1,v2){
+				var arr1=onlyNum(v1);
+				var arr2=onlyNum(v2);
+				var l=arr1.length>=arr2.length?arr1.length:arr2.length;
+				
+				for(var i=0;i<l;i++){
+					if(arr1[i]>arr2[i]){
+						console.log(v1+"和"+v2+"之中"+v1+"版本号大");
+						return;
+					}
+					else if(arr1[i]<arr2[i]){
+						console.log(v1+"和"+v2+"之中"+v2+"版本号大");
+						return;
+					}
+				}
+				
+				if(arr1.length==arr2.length){
+					console.log(v1+"和"+v2+"相等!");
+				}
+				else if(l==arr1.length){
+					console.log(v1+"和"+v2+"之中"+v1+"版本号大");
+				}
+				else{
+					console.log(v1+"和"+v2+"之中"+v2+"版本号大");
+				}
+				
+				
+			}
+			
+			function onlyNum(s){
+				//去掉首尾非数字
+				var s2=s.replace(/^[^\d]+|[^\d]+$/ig,'');
+				//console.log("*"+s2+"*");
+				//以.分割成数组
+				var arr=[];
+				arr=s2.split('.');
+				//console.log(arr);
+				for(var i=0;i<arr.length;i++){
+					arr[i]=parseInt(arr[i]);
+				}
+				return arr;
+			}
+
+			
+		</script>
+				
+	</body>
+</html>
